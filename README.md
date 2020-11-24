@@ -53,6 +53,28 @@ class SomeController
 end
 ```
 
+## Rack Middleware
+
+Have the decrypted params added directly to params using Rack middleware. The decrypted params take precedence over all other params. Configure to use the middleware by adding this to your application.rb.
+
+```ruby
+
+module YourProject
+  class Application < Rails::Application
+
+    # do stuff...
+
+    # Options:
+    #   encrypted_param_prefix: Param's encrypted fields prefix. Default: "_encrypted"
+    #   remove_raw_encrypted_params: True will remove the "_encrypted" sub has from your params. Default: false
+    config.middleware.use EncryptedFormFields::AutoDecryptEncryptedParamsMiddleware, remove_raw_encrypted_params: true
+
+    # do stuff...
+
+  end
+end
+```
+
 ## Contributing
 
 1. Fork it ( http://github.com/lautis/encrypted_form_fields/fork )

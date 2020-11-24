@@ -9,6 +9,8 @@ require "encrypted_form_fields/encrypted_parameters"
 require "encrypted_form_fields/helpers/form_builder"
 require "encrypted_form_fields/railtie" if defined?(Rails)
 
+require "encrypted_form_fields/auto_decrypt_encrypted_params_middleware" if defined?(Rack)
+
 module EncryptedFormFields
   class << self
     def secret_key_base=(key)
